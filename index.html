@@ -81,6 +81,30 @@
 
   .links{display:grid;gap:12px}
   .yt{background:#ff0033}.tt{background:#000;box-shadow:inset 0 0 0 1px #333}.ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}.fb{background:#1877f2}
+
+  /* tarjetas del canal (como los paneles de Twitch) */
+  .seccion{margin:34px 0 12px;font-size:13px;font-weight:800;letter-spacing:2px;color:var(--naranja2);text-transform:uppercase;text-align:center}
+  .tarjetas{display:grid;gap:12px}
+  .tarjeta{position:relative;padding:18px 18px 16px 20px;border-radius:var(--radio);background:var(--tarjeta);border:1px solid var(--borde);
+           backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden}
+  .tarjeta::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0;background:linear-gradient(var(--naranja2),var(--naranja))}
+  .tarjeta h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+  .tarjeta h2 span{font-size:20px}
+  .tarjeta p{font-size:14.5px;line-height:1.6;color:#e7dce4}
+  .tarjeta p+p{margin-top:8px}
+  .tarjeta b{color:#fff}
+  .horario{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:4px}
+  .hora{font-size:clamp(22px,7vw,28px);font-weight:900;letter-spacing:.5px}
+  .hora small{display:block;font-size:12px;font-weight:600;color:#cdbfca;letter-spacing:0}
+  .dias{display:flex;gap:5px}
+  .dias i{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;background:rgba(255,138,31,.16);color:var(--naranja2)}
+  .setup{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:2px}
+  .pieza{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);min-width:0}
+  .pieza small{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--naranja2)}
+  .pieza span{display:block;font-size:13.5px;margin-top:2px;overflow-wrap:anywhere}
+  .apoyo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .apoyo div{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);font-size:13.5px}
+  @media (max-width:360px){.setup,.apoyo{grid-template-columns:1fr}}
   footer{margin-top:30px;text-align:center;font-size:12px;color:#8a7e87}
 
   /* entrada suave */
@@ -117,7 +141,7 @@
     <a class="boton sube" style="animation-delay:.32s" href="https://www.instagram.com/arieldr.live/" target="_blank" rel="noopener">
       <span class="ico ig"><img src="img/instagram.svg" alt=""></span>
       <span class="txt"><span class="n">Instagram</span><span class="d">@arieldr.live</span></span><span class="flecha">›</span></a>
-    <a class="boton sube" style="animation-delay:.38s" href="https://www.youtube.com/channel/UCPgz5ZYacSJSv8x2HsosDiw?sub_confirmation=1" target="_blank" rel="noopener">
+    <a class="boton sube" style="animation-delay:.38s" href="https://www.youtube.com/@arieldrlive?sub_confirmation=1" target="_blank" rel="noopener">
       <span class="ico yt"><img src="img/youtube.svg" alt=""></span>
       <span class="txt"><span class="n">YouTube</span><span class="d">Shorts y videos de GTA 6</span></span><span class="flecha">›</span></a>
     <a class="boton sube" style="animation-delay:.44s" href="https://www.tiktok.com/@arieldrlive" target="_blank" rel="noopener">
@@ -127,6 +151,40 @@
       <span class="ico fb"><img src="img/facebook.svg" alt=""></span>
       <span class="txt"><span class="n">Facebook</span><span class="d">Ariel DR</span></span><span class="flecha">›</span></a>
   </nav>
+
+  <h2 class="seccion sube" style="animation-delay:.56s">Conóceme</h2>
+  <div class="tarjetas">
+    <article class="tarjeta sube" style="animation-delay:.6s">
+      <h2><span>👋</span>Sobre mí</h2>
+      <p>¡Klk, mi gente! Soy <b>Ariel</b>, dominicano 🇩🇴, y aquí vivimos <b>GTA 6</b> como se debe: buscando secretos, carros gratis y cada rincón de Vice City y Leonida.</p>
+      <p>No vengo a ser el que más sabe: vengo a gozármela con ustedes. Si llegas nuevo, saluda en el chat, que aquí todo el mundo es bienvenido.</p>
+    </article>
+    <article class="tarjeta sube" style="animation-delay:.66s">
+      <h2><span>🔴</span>Horario de directos</h2>
+      <div class="horario">
+        <div class="hora">5:00 – 9:00 PM<small>Hora de República Dominicana (GMT-4)</small></div>
+        <div class="dias"><i>L</i><i>M</i><i>M</i><i>J</i><i>V</i><i>S</i><i>D</i></div>
+      </div>
+    </article>
+    <article class="tarjeta sube" style="animation-delay:.72s">
+      <h2><span>🎮</span>Mi setup</h2>
+      <div class="setup">
+        <div class="pieza"><small>Consola</small><span>PlayStation 5</span></div>
+        <div class="pieza"><small>PC</small><span>Ryzen 7 7800X3D · RTX 5070 Ti · 64 GB</span></div>
+        <div class="pieza"><small>Micrófono</small><span>FIFINE + AmpliGame SC3</span></div>
+        <div class="pieza"><small>Audífonos</small><span>KZ 10 Pro</span></div>
+        <div class="pieza"><small>Botonera</small><span>FIFINE AmpliGame D6 PRO</span></div>
+        <div class="pieza"><small>Captura</small><span>Capturadora 4K USB · OBS</span></div>
+      </div>
+    </article>
+    <article class="tarjeta sube" style="animation-delay:.78s">
+      <h2><span>💜</span>Apoya el canal</h2>
+      <div class="apoyo">
+        <div>💜 Sigue el canal</div><div>🔔 Activa la campanita</div>
+        <div>📢 Comparte el directo</div><div>💬 Escribe en el chat</div>
+      </div>
+    </article>
+  </div>
 
   <footer>© ArielDR</footer>
 </main>
