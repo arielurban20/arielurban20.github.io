@@ -7,79 +7,144 @@
 <meta name="description" content="ArielDR, gamer dominicano. GTA 6, secretos y carros gratis. En vivo todos los días en Twitch.">
 <meta property="og:title" content="ArielDR · En vivo todos los días en Twitch">
 <meta property="og:description" content="Gamer dominicano 🇩🇴 · GTA 6 · Todos mis links">
-<meta property="og:image" content="img/og.jpg">
+<meta property="og:image" content="https://arielurban20.github.io/img/og.jpg">
 <meta name="theme-color" content="#120c10">
 <link rel="icon" href="img/favicon.png">
 <style>
-  :root{--naranja:#ff8a1f;--naranja2:#ffb347;--twitch:#9146ff;--fondo:#0e0a0d;--tarjeta:rgba(255,255,255,.06);--borde:rgba(255,255,255,.12)}
+  :root{
+    --naranja:#ff8a1f;--naranja2:#ffb347;--twitch:#9146ff;--fondo:#0d090c;
+    --tarjeta:rgba(255,255,255,.055);--borde:rgba(255,255,255,.10);
+    --radio:22px;--ancho:min(520px,100%);
+  }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{min-height:100vh;background:var(--fondo);color:#fff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-       display:flex;justify-content:center;overflow-x:hidden}
-  body::before{content:"";position:fixed;inset:-20% -20% auto;height:70vh;z-index:0;
-       background:radial-gradient(60% 60% at 50% 30%,rgba(255,138,31,.35),transparent 70%),radial-gradient(40% 40% at 80% 10%,rgba(145,70,255,.25),transparent 70%)}
-  main{position:relative;z-index:1;width:100%;max-width:480px;padding:0 18px 40px}
-  .banner{position:relative;margin:0 -18px;height:190px;background:url(img/banner.webp) center/cover;
-          mask-image:linear-gradient(#000 55%,transparent);-webkit-mask-image:linear-gradient(#000 55%,transparent)}
-  .avatar{display:block;width:112px;height:112px;margin:-70px auto 0;border-radius:50%;border:3px solid var(--naranja);
-          box-shadow:0 0 0 5px rgba(255,138,31,.18),0 10px 30px rgba(0,0,0,.6);object-fit:cover;position:relative;background:#222}
-  .logo{display:block;width:230px;max-width:70%;margin:10px auto 4px;filter:drop-shadow(0 6px 18px rgba(255,138,31,.35))}
-  .lema{text-align:center;color:#e9dfe6;font-size:15px;line-height:1.45}
-  .lema b{color:var(--naranja2)}
-  .vivo{display:flex;align-items:center;gap:14px;margin:22px 0 14px;padding:16px 18px;border-radius:18px;text-decoration:none;color:#fff;
-        background:linear-gradient(135deg,#9146ff,#6d2bd9);box-shadow:0 8px 30px rgba(145,70,255,.45);position:relative;overflow:hidden;
-        animation:latido 2.4s ease-in-out infinite}
-  .vivo::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);
-        transform:translateX(-100%);animation:brillo 3.2s ease-in-out infinite}
-  .vivo img{width:34px;height:34px}
-  .vivo .t1{font-weight:800;font-size:18px;letter-spacing:.3px}
-  .vivo .t2{font-size:13px;opacity:.9}
-  .punto{display:inline-block;width:9px;height:9px;border-radius:50%;background:#ff3b3b;margin-right:6px;box-shadow:0 0 0 0 rgba(255,59,59,.7);animation:pulso 1.6s infinite}
-  .flecha{margin-left:auto;font-size:22px;opacity:.9}
-  .links{display:grid;gap:12px}
-  .link{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;text-decoration:none;color:#fff;
-        background:var(--tarjeta);border:1px solid var(--borde);backdrop-filter:blur(6px);transition:transform .15s,border-color .15s,background .15s}
-  .link:hover,.link:active{transform:translateY(-2px);border-color:var(--naranja);background:rgba(255,138,31,.10)}
-  .ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none}
+  html{-webkit-text-size-adjust:100%}
+  body{min-height:100dvh;background:var(--fondo);color:#fff;
+       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:hidden}
+  /* fondo vivo y suave */
+  .aura{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .aura i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:flota 18s ease-in-out infinite}
+  .aura i:nth-child(1){width:60vmax;height:60vmax;left:-20vmax;top:-25vmax;background:#ff7a18}
+  .aura i:nth-child(2){width:45vmax;height:45vmax;right:-18vmax;top:10vh;background:#7b3cff;animation-delay:-6s;opacity:.35}
+  .aura i:nth-child(3){width:40vmax;height:40vmax;left:10vw;bottom:-25vmax;background:#ff3d6e;animation-delay:-12s;opacity:.25}
+  @keyframes flota{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(4vmax,3vmax) scale(1.08)}}
+
+  main{position:relative;z-index:1;width:var(--ancho);margin:0 auto;padding:0 clamp(14px,4.5vw,22px) 48px}
+  .banner{margin:0 calc(-1 * clamp(14px,4.5vw,22px));height:clamp(150px,42vw,210px);
+          background:url(img/banner.webp) 18% center/cover;
+          mask-image:linear-gradient(#000 45%,transparent);-webkit-mask-image:linear-gradient(#000 45%,transparent)}
+  .avatar{display:block;width:clamp(92px,26vw,118px);aspect-ratio:1;margin:calc(-1 * clamp(56px,15vw,72px)) auto 0;
+          border-radius:50%;object-fit:cover;position:relative;background:#222;
+          border:3px solid var(--naranja);box-shadow:0 0 0 6px rgba(255,138,31,.15),0 14px 34px rgba(0,0,0,.55)}
+  .logo{display:block;width:clamp(170px,58vw,250px);margin:8px auto 2px;filter:drop-shadow(0 8px 22px rgba(255,138,31,.35))}
+  .lema{text-align:center;color:#eadfe7;font-size:clamp(14px,3.8vw,16px);line-height:1.5}
+  .lema b{color:var(--naranja2);font-weight:700}
+
+  /* reproductor */
+  .tv{margin:22px 0 16px;border-radius:var(--radio);padding:3px;
+      background:linear-gradient(135deg,rgba(145,70,255,.9),rgba(255,138,31,.75));
+      box-shadow:0 18px 50px rgba(145,70,255,.25)}
+  .tv-in{border-radius:calc(var(--radio) - 3px);overflow:hidden;background:#000}
+  .tv-top{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#120b17;font-size:13px;font-weight:700;letter-spacing:.3px}
+  .tv-top .estado{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.08)}
+  .tv-top .estado.vivo{background:#e91916}
+  .tv-top .titulo{opacity:.8;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .marco{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+  .marco>div,.marco iframe{position:absolute;inset:0;width:100%!important;height:100%!important;border:0}
+
+  /* botones: rejilla fija, nunca se deforman */
+  .boton{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;column-gap:14px;
+         width:100%;min-height:68px;padding:12px 16px;border-radius:var(--radio);text-decoration:none;color:#fff;
+         background:var(--tarjeta);border:1px solid var(--borde);
+         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+         transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .25s,background .25s}
+  .boton:hover{transform:translateY(-3px);border-color:rgba(255,138,31,.6);background:rgba(255,138,31,.09);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+  .boton:active{transform:scale(.98)}
+  .ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center}
   .ico img{width:22px;height:22px}
-  .link .n{font-weight:700;font-size:16px}
-  .link .d{font-size:12.5px;color:#cbbfc8}
-  .yt{background:#ff0033}.tt{background:#111;border:1px solid #333}.ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}.fb{background:#1877f2}
-  footer{margin-top:28px;text-align:center;font-size:12px;color:#8d8189}
-  @keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
-  @keyframes brillo{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-  @keyframes pulso{0%{box-shadow:0 0 0 0 rgba(255,59,59,.7)}70%{box-shadow:0 0 0 9px rgba(255,59,59,0)}100%{box-shadow:0 0 0 0 rgba(255,59,59,0)}}
-  @media (prefers-reduced-motion:reduce){.vivo,.vivo::after,.punto{animation:none}}
+  .txt{min-width:0}
+  .txt .n{display:block;font-weight:700;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .txt .d{display:block;font-size:13px;color:#cdbfca;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+  .flecha{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);font-size:18px;line-height:1;transition:transform .25s}
+  .boton:hover .flecha{transform:translateX(3px)}
+
+  .principal{min-height:78px;background:linear-gradient(135deg,#9146ff,#6a2ad6);border:0;
+             box-shadow:0 14px 34px rgba(145,70,255,.45);position:relative;overflow:hidden;margin-bottom:12px}
+  .principal:hover{background:linear-gradient(135deg,#9d58ff,#7330e6);box-shadow:0 18px 40px rgba(145,70,255,.55)}
+  .principal::after{content:"";position:absolute;inset:0;pointer-events:none;
+       background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.18) 50%,transparent 65%);
+       transform:translateX(-120%);animation:brillo 4s ease-in-out infinite}
+  .principal .ico{background:rgba(255,255,255,.16)}
+  .principal .n{font-size:17px;font-weight:800;letter-spacing:.3px}
+  .principal .d{color:#fff}
+  .punto{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff4545;margin-right:7px;vertical-align:middle;animation:pulso 1.8s infinite}
+
+  .links{display:grid;gap:12px}
+  .yt{background:#ff0033}.tt{background:#000;box-shadow:inset 0 0 0 1px #333}.ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}.fb{background:#1877f2}
+  footer{margin-top:30px;text-align:center;font-size:12px;color:#8a7e87}
+
+  /* entrada suave */
+  .sube{opacity:0;transform:translateY(14px);animation:sube .7s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes sube{to{opacity:1;transform:none}}
+  @keyframes brillo{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+  @keyframes pulso{0%{box-shadow:0 0 0 0 rgba(255,69,69,.7)}70%{box-shadow:0 0 0 8px rgba(255,69,69,0)}100%{box-shadow:0 0 0 0 rgba(255,69,69,0)}}
+  @media (max-width:360px){.boton{column-gap:10px;padding:10px 12px}.ico{width:40px;height:40px}.flecha{display:none}.boton{grid-template-columns:auto minmax(0,1fr)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.sube{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<div class="aura"><i></i><i></i><i></i></div>
 <main>
   <div class="banner" role="img" aria-label="ArielDR"></div>
-  <img class="avatar" src="img/avatar.webp" alt="ArielDR">
-  <img class="logo" src="img/logo.webp" alt="Ariel DR">
-  <p class="lema">Gamer dominicano 🇩🇴 · <b>GTA 6</b>, secretos y carros gratis<br>En vivo <b>todos los días</b></p>
+  <img class="avatar sube" src="img/avatar.webp" alt="ArielDR">
+  <img class="logo sube" style="animation-delay:.08s" src="img/logo.webp" alt="Ariel DR">
+  <p class="lema sube" style="animation-delay:.14s">Gamer dominicano 🇩🇴 · <b>GTA 6</b>, secretos y carros gratis<br>En vivo <b>todos los días</b></p>
 
-  <a class="vivo" href="https://www.twitch.tv/ariel__dr" target="_blank" rel="noopener">
-    <img src="img/twitch.svg" alt="">
-    <span><span class="t1"><span class="punto"></span>SÍGUEME EN TWITCH</span><br><span class="t2">twitch.tv/ariel__dr · en vivo todos los días</span></span>
+  <section class="tv sube" style="animation-delay:.2s" aria-label="Twitch de ArielDR">
+    <div class="tv-in">
+      <div class="tv-top"><span class="estado" id="estado">● ÚLTIMO DIRECTO</span><span class="titulo" id="titulo">Descubriendo el mapa completo de GTA 6</span></div>
+      <div class="marco"><div id="twitch"></div></div>
+    </div>
+  </section>
+
+  <a class="boton principal sube" style="animation-delay:.26s" href="https://www.twitch.tv/ariel__dr" target="_blank" rel="noopener">
+    <span class="ico"><img src="img/twitch.svg" alt=""></span>
+    <span class="txt"><span class="n"><span class="punto"></span>SÍGUEME EN TWITCH</span><span class="d">twitch.tv/ariel__dr · en vivo todos los días</span></span>
     <span class="flecha">›</span>
   </a>
 
   <nav class="links">
-    <a class="link" href="https://www.youtube.com/channel/UCPgz5ZYacSJSv8x2HsosDiw?sub_confirmation=1" target="_blank" rel="noopener">
-      <span class="ico yt"><img src="img/youtube.svg" alt=""></span>
-      <span><span class="n">YouTube</span><br><span class="d">Shorts y videos de GTA 6</span></span></a>
-    <a class="link" href="https://www.tiktok.com/@arieldrlive" target="_blank" rel="noopener">
-      <span class="ico tt"><img src="img/tiktok.svg" alt=""></span>
-      <span><span class="n">TikTok</span><br><span class="d">@arieldrlive</span></span></a>
-    <a class="link" href="https://www.instagram.com/arieldr.live/" target="_blank" rel="noopener">
+    <a class="boton sube" style="animation-delay:.32s" href="https://www.instagram.com/arieldr.live/" target="_blank" rel="noopener">
       <span class="ico ig"><img src="img/instagram.svg" alt=""></span>
-      <span><span class="n">Instagram</span><br><span class="d">@arieldr.live</span></span></a>
-    <a class="link" href="https://www.facebook.com/1431084260090280" target="_blank" rel="noopener">
+      <span class="txt"><span class="n">Instagram</span><span class="d">@arieldr.live</span></span><span class="flecha">›</span></a>
+    <a class="boton sube" style="animation-delay:.38s" href="https://www.youtube.com/channel/UCPgz5ZYacSJSv8x2HsosDiw?sub_confirmation=1" target="_blank" rel="noopener">
+      <span class="ico yt"><img src="img/youtube.svg" alt=""></span>
+      <span class="txt"><span class="n">YouTube</span><span class="d">Shorts y videos de GTA 6</span></span><span class="flecha">›</span></a>
+    <a class="boton sube" style="animation-delay:.44s" href="https://www.tiktok.com/@arieldrlive" target="_blank" rel="noopener">
+      <span class="ico tt"><img src="img/tiktok.svg" alt=""></span>
+      <span class="txt"><span class="n">TikTok</span><span class="d">@arieldrlive</span></span><span class="flecha">›</span></a>
+    <a class="boton sube" style="animation-delay:.5s" href="https://www.facebook.com/1431084260090280" target="_blank" rel="noopener">
       <span class="ico fb"><img src="img/facebook.svg" alt=""></span>
-      <span><span class="n">Facebook</span><br><span class="d">Ariel DR</span></span></a>
+      <span class="txt"><span class="n">Facebook</span><span class="d">Ariel DR</span></span><span class="flecha">›</span></a>
   </nav>
 
   <footer>© ArielDR</footer>
 </main>
+
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+<script>
+  // Si está EN VIVO se ve el directo; si no, el último directo grabado (actualizar ULTIMO_VOD después de cada stream)
+  const CANAL = "ariel__dr";
+  const ULTIMO_VOD = "2935145440";
+  const padres = [location.hostname || "arielurban20.github.io"];
+  const estado = document.getElementById("estado"), titulo = document.getElementById("titulo");
+  try {
+    const p = new Twitch.Player("twitch", {channel: CANAL, parent: padres, autoplay: true, muted: true, width: "100%", height: "100%"});
+    p.addEventListener(Twitch.Player.ONLINE, () => { estado.textContent = "● EN VIVO AHORA"; estado.classList.add("vivo"); titulo.textContent = "Entra al directo"; });
+    p.addEventListener(Twitch.Player.OFFLINE, () => { p.setVideo("v" + ULTIMO_VOD, 0); p.setMuted(true); p.play(); });
+  } catch (e) {
+    document.getElementById("twitch").innerHTML =
+      `<iframe src="https://player.twitch.tv/?video=v${ULTIMO_VOD}&parent=${padres[0]}&autoplay=true&muted=true" allowfullscreen></iframe>`;
+  }
+</script>
 </body>
 </html>
