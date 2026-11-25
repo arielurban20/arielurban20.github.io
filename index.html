@@ -136,15 +136,16 @@
   // Si está EN VIVO se ve el directo; si no, el último directo grabado (actualizar ULTIMO_VOD después de cada stream)
   const CANAL = "ariel__dr";
   const ULTIMO_VOD = "2935145440";
+  const INICIO = 39 * 60; // segundo donde arranca el directo grabado (39:00)
   const padres = [location.hostname || "arielurban20.github.io"];
   const estado = document.getElementById("estado"), titulo = document.getElementById("titulo");
   try {
     const p = new Twitch.Player("twitch", {channel: CANAL, parent: padres, autoplay: true, muted: true, width: "100%", height: "100%"});
     p.addEventListener(Twitch.Player.ONLINE, () => { estado.textContent = "● EN VIVO AHORA"; estado.classList.add("vivo"); document.body.classList.add("envivo"); titulo.textContent = "Entra al directo"; });
-    p.addEventListener(Twitch.Player.OFFLINE, () => { p.setVideo("v" + ULTIMO_VOD, 0); p.setMuted(true); p.play(); });
+    p.addEventListener(Twitch.Player.OFFLINE, () => { p.setVideo("v" + ULTIMO_VOD, INICIO); p.setMuted(true); p.play(); });
   } catch (e) {
     document.getElementById("twitch").innerHTML =
-      `<iframe src="https://player.twitch.tv/?video=v${ULTIMO_VOD}&parent=${padres[0]}&autoplay=true&muted=true" allowfullscreen></iframe>`;
+      `<iframe src="https://player.twitch.tv/?video=v${ULTIMO_VOD}&time=39m00s&parent=${padres[0]}&autoplay=true&muted=true" allowfullscreen></iframe>`;
   }
 </script>
 </body>
