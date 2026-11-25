@@ -76,7 +76,8 @@
   .principal .ico{background:rgba(255,255,255,.16)}
   .principal .n{font-size:17px;font-weight:800;letter-spacing:.3px}
   .principal .d{color:#fff}
-  .punto{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff4545;margin-right:7px;vertical-align:middle;animation:pulso 1.8s infinite}
+  .punto{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff4545;margin-right:7px;vertical-align:middle}
+  body.envivo .punto{animation:pulso 1.8s infinite}
 
   .links{display:grid;gap:12px}
   .yt{background:#ff0033}.tt{background:#000;box-shadow:inset 0 0 0 1px #333}.ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}.fb{background:#1877f2}
@@ -139,7 +140,7 @@
   const estado = document.getElementById("estado"), titulo = document.getElementById("titulo");
   try {
     const p = new Twitch.Player("twitch", {channel: CANAL, parent: padres, autoplay: true, muted: true, width: "100%", height: "100%"});
-    p.addEventListener(Twitch.Player.ONLINE, () => { estado.textContent = "● EN VIVO AHORA"; estado.classList.add("vivo"); titulo.textContent = "Entra al directo"; });
+    p.addEventListener(Twitch.Player.ONLINE, () => { estado.textContent = "● EN VIVO AHORA"; estado.classList.add("vivo"); document.body.classList.add("envivo"); titulo.textContent = "Entra al directo"; });
     p.addEventListener(Twitch.Player.OFFLINE, () => { p.setVideo("v" + ULTIMO_VOD, 0); p.setMuted(true); p.play(); });
   } catch (e) {
     document.getElementById("twitch").innerHTML =
